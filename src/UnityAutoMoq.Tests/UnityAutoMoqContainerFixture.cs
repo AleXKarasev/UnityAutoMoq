@@ -146,5 +146,16 @@ namespace UnityAutoMoq.Tests
 
             real.ShouldBeOfType<AnotherService>();
         }
+
+        [Test]
+        public void GetStubMethod_ShouldReturn_TheSameMockedInstance()
+        {
+            container = new UnityAutoMoqContainer(DefaultValue.Empty);
+            var mocked = container.GetMock<IService>();
+
+            var stub = container.GetStub<IService>();
+
+            mocked.Object.ShouldBeSameAs(stub.Object);
+        }
     }
 }
