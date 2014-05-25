@@ -32,6 +32,12 @@ namespace UnityAutoMoq
             asExpressions = new Dictionary<Type, AsExpression>();
         }
 
+        /// <summary>
+        /// Defualt Value to be used for automocking
+        /// </summary>
+        /// <value>
+        /// The default value.
+        /// </value>
         public DefaultValue DefaultValue { get; set; }
 
         /// <summary>
