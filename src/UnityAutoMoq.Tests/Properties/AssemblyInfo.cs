@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Infodoc AS")]
 [assembly: AssemblyProduct("UnityAutoMoq.Test")]
-[assembly: AssemblyCopyright("Copyright © Infodoc AS 2009")]
+[assembly: AssemblyCopyright("Copyright (C) Thomas Pedersen, Raj Aththanayake")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

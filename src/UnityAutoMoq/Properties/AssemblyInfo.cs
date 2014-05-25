@@ -4,6 +4,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Automocking container using Microsoft Unity and Moq")]
 [assembly: AssemblyCompany("UnityAutoMoq")]
 [assembly: AssemblyProduct("UnityAutoMoq")]
-[assembly: AssemblyCopyright("Copyright (C) Thomas Pedersen")]
-[assembly: AssemblyVersion("2.1.1")]
+[assembly: AssemblyCopyright("Copyright (C) Thomas Pedersen, Raj Aththanayake")]
+[assembly: AssemblyVersion("3.0.0")]
 
