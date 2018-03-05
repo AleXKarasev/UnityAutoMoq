@@ -1,5 +1,5 @@
 using System.Reflection;
-using System.Runtime.InteropServices;
+
 [assembly: AssemblyTitle("UnityAutoMoq")]
 [assembly: AssemblyDescription("Automocking container using Microsoft Unity and Moq")]
 [assembly: AssemblyCompany("UnityAutoMoq")]

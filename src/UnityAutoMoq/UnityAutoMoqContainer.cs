@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Microsoft.Practices.Unity;
 using Moq;
+using Unity;
 
 namespace UnityAutoMoq
 {

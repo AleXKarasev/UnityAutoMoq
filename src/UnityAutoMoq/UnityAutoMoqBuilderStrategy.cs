@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Microsoft.Practices.ObjectBuilder2;
 using Moq;
+using Unity.Builder;
+using Unity.Builder.Strategy;
 
 namespace UnityAutoMoq
 {
@@ -12,8 +13,8 @@ namespace UnityAutoMoq
     /// </summary>
     public class UnityAutoMoqBuilderStrategy : BuilderStrategy
     {
-        private readonly UnityAutoMoqContainer autoMoqContainer;
-        private readonly Dictionary<Type, object> mocks;
+        private readonly UnityAutoMoqContainer _autoMoqContainer;
+        private readonly Dictionary<Type, object> _mocks;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UnityAutoMoqBuilderStrategy"/> class.
@@ -21,8 +22,8 @@ namespace UnityAutoMoq
         /// <param name="autoMoqContainer">The auto moq container.</param>
         public UnityAutoMoqBuilderStrategy(UnityAutoMoqContainer autoMoqContainer)
         {
-            this.autoMoqContainer = autoMoqContainer;
-            mocks = new Dictionary<Type, object>();
+            this._autoMoqContainer = autoMoqContainer;
+            _mocks = new Dictionary<Type, object>();
         }
 
         /// <summary>
@@ -35,7 +36,7 @@ namespace UnityAutoMoq
         {
             var type = context.OriginalBuildKey.Type;
 
-            if (autoMoqContainer.Registrations.Any(r => r.RegisteredType == type))
+            if (_autoMoqContainer.Registrations.Any(r => r.RegisteredType == type))
                 return;
             
             if (type.IsInterface || type.IsAbstract)
@@ -47,21 +48,21 @@ namespace UnityAutoMoq
        
         private object GetOrCreateMock(Type t)
         {
-            if (mocks.ContainsKey(t))
-                return mocks[t];
+            if (_mocks.ContainsKey(t))
+                return _mocks[t];
 
             Type genericType = typeof(Mock<>).MakeGenericType(new[] { t });
 
             object mock = Activator.CreateInstance(genericType);
 
-            AsExpression interfaceImplementations = autoMoqContainer.GetInterfaceImplementations(t);
+            AsExpression interfaceImplementations = _autoMoqContainer.GetInterfaceImplementations(t);
             if(interfaceImplementations != null)
                 interfaceImplementations.GetImplementations().Each(type => genericType.GetMethod("As").MakeGenericMethod(type).Invoke(mock, null));
 
-            genericType.InvokeMember("DefaultValue", BindingFlags.SetProperty, null, mock, new object[] { autoMoqContainer.DefaultValue });
+            genericType.InvokeMember("DefaultValue", BindingFlags.SetProperty, null, mock, new object[] { _autoMoqContainer.DefaultValue });
 
             object mockedInstance = genericType.InvokeMember("Object", BindingFlags.GetProperty, null, mock, null);
-            mocks.Add(t, mockedInstance);
+            _mocks.Add(t, mockedInstance);
 
             return mockedInstance;
         }

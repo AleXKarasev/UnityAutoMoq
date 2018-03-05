@@ -72,12 +72,12 @@
     // http://www.opensource.org/licenses/bsd-license.php]
     #endregion
 
-    using System;
-    using System.Linq;
-    using System.Collections;
-    using NUnit.Framework;
+using System;
+using System.Collections;
+using System.Linq;
+using NUnit.Framework;
 
-    /// <summary>
+/// <summary>
     /// Marks a class that contains tests.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]

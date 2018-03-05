@@ -1,5 +1,5 @@
-using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.ObjectBuilder;
+using Unity.Builder;
+using Unity.Extension;
 
 namespace UnityAutoMoq
 {
@@ -8,7 +8,7 @@ namespace UnityAutoMoq
     /// </summary>
     public class UnityAutoMoqExtension : UnityContainerExtension
     {
-        private readonly UnityAutoMoqContainer autoMoqContainer;
+        private readonly UnityAutoMoqContainer _autoMoqContainer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UnityAutoMoqExtension"/> class.
@@ -16,7 +16,7 @@ namespace UnityAutoMoq
         /// <param name="autoMoqContainer">The auto moq container.</param>
         public UnityAutoMoqExtension(UnityAutoMoqContainer autoMoqContainer)
         {
-            this.autoMoqContainer = autoMoqContainer;
+            this._autoMoqContainer = autoMoqContainer;
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace UnityAutoMoq
         /// </summary>
         protected override void Initialize()
         {
-            Context.Strategies.Add(new UnityAutoMoqBuilderStrategy(autoMoqContainer), UnityBuildStage.PreCreation);
+            Context.Strategies.Add(new UnityAutoMoqBuilderStrategy(_autoMoqContainer), UnityBuildStage.PreCreation);
         }
     }
 }
