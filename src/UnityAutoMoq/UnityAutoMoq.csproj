@@ -1,9 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net46</TargetFramework>
+    <Authors>Aleksei Karasev, Raj Aththanayake, Thomas Pedersen</Authors>
+    <PackageLicenseUrl>http://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/AleXKarasev/UnityAutoMoq</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/AleXKarasev/UnityAutoMoq</RepositoryUrl>
+    <Company></Company>
+    <Product>Unity Auto Mocking container</Product>
+    <Description>Automocking container using Microsoft Unity and Moq.</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>UnityAutoMoqContainer</PackageId>
+    <PackageReleaseNotes />
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Moq" Version="4.8.2" />
-    <PackageReference Include="Unity" Version="5.7.3" />
+    <PackageReference Include="Unity" Version="5.7.1" />
   </ItemGroup>
 </Project>
