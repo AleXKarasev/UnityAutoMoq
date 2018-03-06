@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityAutoMoq.Tests", "UnityAutoMoq.Tests\UnityAutoMoq.Tests.csproj", "{72D98508-6E3B-4ADF-95F1-B03A0CA81F87}"
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnityAutoMoq.Tests", "UnityAutoMoq.Tests\UnityAutoMoq.Tests.csproj", "{72D98508-6E3B-4ADF-95F1-B03A0CA81F87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityAutoMoq", "UnityAutoMoq\UnityAutoMoq.csproj", "{3FF285B9-7D50-4192-BE06-C3C64EF484FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnityAutoMoq", "UnityAutoMoq\UnityAutoMoq.csproj", "{3FF285B9-7D50-4192-BE06-C3C64EF484FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +13,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{72D98508-6E3B-4ADF-95F1-B03A0CA81F87}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{72D98508-6E3B-4ADF-95F1-B03A0CA81F87}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{72D98508-6E3B-4ADF-95F1-B03A0CA81F87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72D98508-6E3B-4ADF-95F1-B03A0CA81F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72D98508-6E3B-4ADF-95F1-B03A0CA81F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72D98508-6E3B-4ADF-95F1-B03A0CA81F87}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3FF285B9-7D50-4192-BE06-C3C64EF484FD}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{3FF285B9-7D50-4192-BE06-C3C64EF484FD}.Debug|Any CPU.Build.0 = Release|Any CPU
-		{3FF285B9-7D50-4192-BE06-C3C64EF484FD}.Debug|Any CPU.Deploy.0 = Release|Any CPU
+		{3FF285B9-7D50-4192-BE06-C3C64EF484FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FF285B9-7D50-4192-BE06-C3C64EF484FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FF285B9-7D50-4192-BE06-C3C64EF484FD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{3FF285B9-7D50-4192-BE06-C3C64EF484FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FF285B9-7D50-4192-BE06-C3C64EF484FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
@@ -25,6 +27,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02AE1DCE-AD95-46EF-B9BE-3A8C17FC1CEA}
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
 	EndGlobalSection
 EndGlobal
