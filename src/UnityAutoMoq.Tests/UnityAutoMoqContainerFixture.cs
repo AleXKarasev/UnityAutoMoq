@@ -3,6 +3,7 @@ using System.Web;
 using Moq;
 using NUnit.Framework;
 using Unity;
+using UnityAutoMoq.Tests.TestClasses;
 
 namespace UnityAutoMoq.Tests
 {
@@ -22,7 +23,7 @@ namespace UnityAutoMoq.Tests
         {
             var mocked = _container.Resolve<IService>();
 
-            mocked.ShouldNotBeNull();
+            Assert.IsNotNull(mocked);
         }
 
         [Test]
@@ -30,7 +31,7 @@ namespace UnityAutoMoq.Tests
         {
             Mock<IService> mock = _container.GetMock<IService>();
 
-            mock.ShouldNotBeNull();
+            Assert.IsNotNull(mock);
         }
 
         [Test]
@@ -39,7 +40,7 @@ namespace UnityAutoMoq.Tests
             Mock<IService> mock = _container.GetMock<IService>();
             var mocked = _container.Resolve<IService>();
 
-            mock.Object.ShouldBeSameAs(mocked);
+            Assert.AreSame(mocked, mock.Object);
         }
 
         [Test]
@@ -48,7 +49,7 @@ namespace UnityAutoMoq.Tests
             var mocked = _container.Resolve<IService>();
             Mock<IService> mock = _container.GetMock<IService>();
 
-            mock.Object.ShouldBeSameAs(mocked);
+            Assert.AreSame(mocked, mock.Object);
         }
 
         [Test]
@@ -57,7 +58,7 @@ namespace UnityAutoMoq.Tests
             _container = new UnityAutoMoqContainer();
             var mocked = _container.GetMock<IService>();
 
-            mocked.DefaultValue.ShouldEqual(DefaultValue.Mock);
+            Assert.AreEqual(DefaultValue.Mock, mocked.DefaultValue);
         }
 
         [Test]
@@ -66,7 +67,7 @@ namespace UnityAutoMoq.Tests
             _container = new UnityAutoMoqContainer(DefaultValue.Empty);
             var mocked = _container.GetMock<IService>();
 
-            mocked.DefaultValue.ShouldEqual(DefaultValue.Empty);
+            Assert.AreEqual(DefaultValue.Empty, mocked.DefaultValue);
         }
 
         [Test]
@@ -75,7 +76,7 @@ namespace UnityAutoMoq.Tests
             _container = new UnityAutoMoqContainer{DefaultValue = DefaultValue.Empty};
             var mocked = _container.GetMock<IService>();
 
-            mocked.DefaultValue.ShouldEqual(DefaultValue.Empty);
+            Assert.AreEqual(DefaultValue.Empty, mocked.DefaultValue);
         }
 
         [Test]
@@ -83,8 +84,8 @@ namespace UnityAutoMoq.Tests
         {
             var concrete = _container.Resolve<Service>();
 
-            concrete.ShouldNotBeNull();
-            concrete.AnotherService.ShouldNotBeNull();
+            Assert.IsNotNull(concrete);
+            Assert.IsNotNull(concrete.AnotherService);
         }
 
         [Test]
@@ -93,7 +94,7 @@ namespace UnityAutoMoq.Tests
             var concrete = _container.Resolve<Service>();
             Mock<IAnotherService> mock = _container.GetMock<IAnotherService>();
 
-            concrete.AnotherService.ShouldBeSameAs(mock.Object);
+            Assert.AreSame(mock.Object, concrete.AnotherService);
         }
 
         [Test]
@@ -126,7 +127,7 @@ namespace UnityAutoMoq.Tests
         {
             var mock = _container.GetMock<HttpContextBase>();
 
-            mock.ShouldBeOfType<Mock<HttpContextBase>>();
+            Assert.IsAssignableFrom<Mock<HttpContextBase>>(mock);
         }
 
         [Test]
@@ -135,7 +136,7 @@ namespace UnityAutoMoq.Tests
             var concrete = _container.Resolve<ServiceWithAbstractDependency>();
             var mock = _container.GetMock<HttpContextBase>();
 
-            concrete.HttpContextBase.ShouldBeSameAs(mock.Object);
+            Assert.AreSame(mock.Object, concrete.HttpContextBase);
         }
 
         [Test]
@@ -144,7 +145,7 @@ namespace UnityAutoMoq.Tests
             _container.RegisterType<IAnotherService, AnotherService>();
             var real = _container.Resolve<IAnotherService>();
 
-            real.ShouldBeOfType<AnotherService>();
+            Assert.IsAssignableFrom<AnotherService>(real);
         }
 
         [Test]
@@ -155,7 +156,7 @@ namespace UnityAutoMoq.Tests
 
             var stub = _container.GetStub<IService>();
 
-            mocked.Object.ShouldBeSameAs(stub.Object);
+            Assert.AreSame(stub.Object, mocked.Object);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace UnityAutoMoq
     /// </summary>
     public class UnityAutoMoqContainer : UnityContainer
     {
-        private readonly Dictionary<Type, AsExpression> asExpressions;
+        private readonly Dictionary<Type, AsExpression> _asExpressions;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UnityAutoMoqContainer"/> class.
@@ -29,11 +29,11 @@ namespace UnityAutoMoq
             DefaultValue = defaultValue;
             AddExtension(new UnityAutoMoqExtension(this));
 
-            asExpressions = new Dictionary<Type, AsExpression>();
+            _asExpressions = new Dictionary<Type, AsExpression>();
         }
 
         /// <summary>
-        /// Defualt Value to be used for automocking
+        /// Default Value to be used for automocking
         /// </summary>
         /// <value>
         /// The default value.
@@ -66,7 +66,7 @@ namespace UnityAutoMoq
         /// Provide a stub object of the given instance. 
         /// Any associated virtual types have proxy instances generated.
         /// </summary>
-        /// <typeparam name="T">The type paramater of the instance to stub</typeparam>
+        /// <typeparam name="T">The type parameter of the instance to stub</typeparam>
         /// <returns>The mocked instance</returns>
         public Mock<T> GetStub<T>() where T : class
         {
@@ -76,20 +76,18 @@ namespace UnityAutoMoq
         /// <summary>
         /// Configures the mock.
         /// </summary>
-        /// <typeparam name="T">The type paramater of the instance to configure the mock</typeparam>
+        /// <typeparam name="T">The type parameter of the instance to configure the mock</typeparam>
         /// <returns></returns>
         public AsExpression ConfigureMock<T>()
         {
             var asExpression = new AsExpression(typeof(T));
-            asExpressions.Add(typeof(T),  asExpression);
+            _asExpressions.Add(typeof(T),  asExpression);
             return asExpression;
         }
 
         internal AsExpression GetInterfaceImplementations(Type t)
         {
-            return asExpressions.ContainsKey(t) ? asExpressions[t] : null;
+            return _asExpressions.ContainsKey(t) ? _asExpressions[t] : null;
         }
-
-       
     }
 }

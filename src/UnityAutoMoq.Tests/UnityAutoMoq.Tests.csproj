@@ -107,14 +107,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnotherService.cs" />
-    <Compile Include="CoreTdd.cs" />
-    <Compile Include="IAnotherService.cs" />
-    <Compile Include="IService.cs" />
-    <Compile Include="LazyService.cs" />
+    <Compile Include="TestClasses\AnotherService.cs" />
+    <Compile Include="TestClasses\IAnotherService.cs" />
+    <Compile Include="TestClasses\IService.cs" />
+    <Compile Include="TestClasses\LazyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service.cs" />
-    <Compile Include="ServiceWithAbstractDependency.cs" />
+    <Compile Include="TestClasses\Service.cs" />
+    <Compile Include="TestClasses\ServiceWithAbstractDependency.cs" />
     <Compile Include="UnityAutoMoqContainerFixture.cs" />
   </ItemGroup>
   <ItemGroup>

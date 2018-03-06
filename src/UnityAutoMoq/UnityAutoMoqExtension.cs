@@ -16,7 +16,7 @@ namespace UnityAutoMoq
         /// <param name="autoMoqContainer">The auto moq container.</param>
         public UnityAutoMoqExtension(UnityAutoMoqContainer autoMoqContainer)
         {
-            this._autoMoqContainer = autoMoqContainer;
+            _autoMoqContainer = autoMoqContainer;
         }
 
         /// <summary>

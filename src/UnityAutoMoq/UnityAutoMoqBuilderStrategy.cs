@@ -9,7 +9,7 @@ using Unity.Builder.Strategy;
 namespace UnityAutoMoq
 {
     /// <summary>
-    /// Builder strategy for for Unity Automq container.
+    /// Builder strategy for for Unity Automoq container.
     /// </summary>
     public class UnityAutoMoqBuilderStrategy : BuilderStrategy
     {
@@ -22,7 +22,7 @@ namespace UnityAutoMoq
         /// <param name="autoMoqContainer">The auto moq container.</param>
         public UnityAutoMoqBuilderStrategy(UnityAutoMoqContainer autoMoqContainer)
         {
-            this._autoMoqContainer = autoMoqContainer;
+            _autoMoqContainer = autoMoqContainer;
             _mocks = new Dictionary<Type, object>();
         }
 
@@ -35,10 +35,11 @@ namespace UnityAutoMoq
         public override void PreBuildUp(IBuilderContext context)
         {
             var type = context.OriginalBuildKey.Type;
-
             if (_autoMoqContainer.Registrations.Any(r => r.RegisteredType == type))
-                return;
-            
+            {
+                 return;
+            }
+
             if (type.IsInterface || type.IsAbstract)
             {
                 context.Existing = GetOrCreateMock(type);
@@ -49,15 +50,16 @@ namespace UnityAutoMoq
         private object GetOrCreateMock(Type t)
         {
             if (_mocks.ContainsKey(t))
+            {
                 return _mocks[t];
+            }
 
-            Type genericType = typeof(Mock<>).MakeGenericType(new[] { t });
+            Type genericType = typeof(Mock<>).MakeGenericType(t);
 
             object mock = Activator.CreateInstance(genericType);
 
             AsExpression interfaceImplementations = _autoMoqContainer.GetInterfaceImplementations(t);
-            if(interfaceImplementations != null)
-                interfaceImplementations.GetImplementations().Each(type => genericType.GetMethod("As").MakeGenericMethod(type).Invoke(mock, null));
+            interfaceImplementations?.GetImplementations().Each(type => genericType.GetMethod("As").MakeGenericMethod(type).Invoke(mock, null));
 
             genericType.InvokeMember("DefaultValue", BindingFlags.SetProperty, null, mock, new object[] { _autoMoqContainer.DefaultValue });
 
