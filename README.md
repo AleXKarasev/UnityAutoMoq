@@ -2,6 +2,8 @@
 
 Automocking container using Microsoft Unity and Moq.
 
+[![Build status](https://ci.appveyor.com/api/projects/status/fldyc49w6enivpw9?svg=true)](https://ci.appveyor.com/project/AleXKarasev/unityautomoq)
+
 ## Download and install
 
 UnityAutoMoq is available for download on [NuGet](https://www.nuget.org/packages/UnityAutoMoqContainer/).
