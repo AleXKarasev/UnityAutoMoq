@@ -10,13 +10,14 @@
     <Description>Automocking container using Microsoft Unity and Moq.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>UnityAutoMoqContainer</PackageId>
-    <PackageReleaseNotes />
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
-    <Version>1.1.0</Version>
+    <PackageReleaseNotes>- Fixed compatibility with last Unity.
+- Updated Moq and Unity references.</PackageReleaseNotes>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0.0</FileVersion>
+    <Version>1.2.0</Version>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Moq" Version="4.5.0" />
-    <PackageReference Include="Unity" Version="5.0.0" />
+    <PackageReference Include="Moq" Version="4.8.2" />
+    <PackageReference Include="Unity" Version="5.7.0" />
   </ItemGroup>
 </Project>
