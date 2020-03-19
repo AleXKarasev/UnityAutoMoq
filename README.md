@@ -1,4 +1,4 @@
-# UnityAutoMoqContainer v1.0.0
+# UnityAutoMoqContainer v1.3.0
 
 Automocking container using Microsoft Unity and Moq.
 
