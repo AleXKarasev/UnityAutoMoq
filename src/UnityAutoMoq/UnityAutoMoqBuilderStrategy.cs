@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Moq;
 using Unity.Builder;
-using Unity.Builder.Strategy;
+using Unity.Strategies;
 
 namespace UnityAutoMoq
 {
@@ -32,9 +32,9 @@ namespace UnityAutoMoq
         /// forward direction.
         /// </summary>
         /// <param name="context">Context of the build operation.</param>
-        public override void PreBuildUp(IBuilderContext context)
+        public override void PreBuildUp(ref BuilderContext context)
         {
-            var type = context.OriginalBuildKey.Type;
+            var type = context.Type;
             if (_autoMoqContainer.Registrations.Any(r => r.RegisteredType == type))
             {
                  return;
@@ -46,7 +46,7 @@ namespace UnityAutoMoq
                 context.BuildComplete = true;
             }
         }
-       
+
         private object GetOrCreateMock(Type t)
         {
             if (_mocks.ContainsKey(t))

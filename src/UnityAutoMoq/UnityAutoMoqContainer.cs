@@ -41,18 +41,18 @@ namespace UnityAutoMoq
         public DefaultValue DefaultValue { get; set; }
 
         /// <summary>
-        /// Provide an instance of the requested type with the given name from the container. 
+        /// Provide an instance of the requested type with the given name from the container.
         /// Any associated virtual types have proxy instances generated.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns>The retrieved instance</returns>
         public T Resolve<T>()
         {
-            return (T)Resolve(typeof(T), null);
+            return (T)this.Resolve(typeof(T));
         }
 
         /// <summary>
-        /// Provide a mock object of the given instance. 
+        /// Provide a mock object of the given instance.
         /// Any associated virtual types have proxy instances generated.
         /// </summary>
         /// <typeparam name="T">The type paramater of the instance mock</typeparam>
@@ -63,7 +63,7 @@ namespace UnityAutoMoq
         }
 
         /// <summary>
-        /// Provide a stub object of the given instance. 
+        /// Provide a stub object of the given instance.
         /// Any associated virtual types have proxy instances generated.
         /// </summary>
         /// <typeparam name="T">The type parameter of the instance to stub</typeparam>
