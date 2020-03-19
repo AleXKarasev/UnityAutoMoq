@@ -2,10 +2,6 @@ namespace UnityAutoMoq.Tests.TestClasses
 {
     public class Service : IService
     {
-        public Service()
-        {
-        }
-
         public Service(IAnotherService anotherService)
         {
             AnotherService = anotherService;
